@@ -1,18 +1,19 @@
 let selected = [];
+const cards = ["nature", "characters", "paintings", "renders"];
 
 const libraryLink = document.querySelector("#library");
 const slideShowLink = document.querySelector("#slideShow");
 
-function select(id){
-  const card = document.querySelector(`#${id}`);
+function select(index){
+  const card = document.querySelector(`#${cards[index]}`);
 
-  index = selected.indexOf(id);
-  if (index == -1){
-    selected.push(id);
+  selectedIndex = selected.indexOf(cards[index]);
+  if (selectedIndex == -1){
+    selected.push(index);
     card.style.backgroundColor = "Lightgreen"
   } else {
-    selected.splice(index, 1);
 
+    selected.splice(selectedIndex, 1);
     card.style.backgroundColor = "#140d21";
   }
 

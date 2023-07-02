@@ -1,0 +1,31 @@
+var index;
+const cards = ["nature", "characters", "paintings", "renders"];
+let body = document.querySelector("#body");
+let title = document.querySelector("#title");
+
+const images = [
+  {"HELLO":"HMMM"},
+  {
+    path:"../assets/characters/",
+    mobileImages:["spiderman.jpg", "kakashiHatake.jgp", "aoashi.jpeg"],
+    desktopImages:["aoashi.jgp", "kakashiHatake.jpg", "spiderman.jpeg"],
+  },
+]
+
+const libraryURL = window.location.href;
+const usp = new URLSearchParams(libraryURL);
+
+for (const [_, value] of usp){
+  index = value;
+}
+
+title.innerText = cards[index]; 
+
+function showImages(){
+  let card = cards[index];
+
+  body.innerHTML = "<div class='card'><img scr=`${card.path}``${card.mobileImages}`></div>"
+}
+
+showImages();
+
