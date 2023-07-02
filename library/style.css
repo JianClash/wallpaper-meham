@@ -1,0 +1,19 @@
+* {
+  color: white;
+  font-family: Roboto, Ubuntu, monospace;
+}
+
+body {
+  background-color: #211d36;
+}
+
+.home {
+  text-decoration: none;
+}
+
+.card {
+
+  display: inline-block;
+  /* border: yellow double; */
+  padding: 10px;
+}

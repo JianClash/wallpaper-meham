@@ -1,0 +1,70 @@
+* {
+  color: white;  
+  font-family: Roboto, Ubuntu, monospace;
+}
+
+body {
+  background-color: #211d36;
+}
+
+.topnav{
+  overflow: hidden;
+  padding: 10px;
+}
+
+.topnav h2{
+  float: left;
+  display: block;
+  text-align: center;
+}
+
+.topnav .pages{
+  float: right;
+  display: block;
+  padding: 20px;
+}
+
+.topnav .pages a {
+  padding: 5px;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle; 
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.card {
+  padding: 20px;
+  border-style: ridge;
+  border-radius: 11px;
+  position: relative;
+  display: inline-block;
+  background-color: #140d21;
+}
+
+.thumbnail:hover + .title {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+
+  display: none;
+
+  background-color: black;
+  opacity: 0.6;
+}
+
+.card:enabled {
+  background-color: green;
+}
+
+/* .thumbnail-characters { */
+/*   height: 400px; */
+/*   width: 650px; */
+/* } */
+
