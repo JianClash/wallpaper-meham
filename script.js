@@ -4,10 +4,12 @@ const cards = ["nature", "characters", "paintings", "renders"];
 const libraryLink = document.querySelector("#library");
 const slideShowLink = document.querySelector("#slideShow");
 
+let body = document.querySelector("#body");
+
 function select(index){
   const card = document.querySelector(`#${cards[index]}`);
 
-  selectedIndex = selected.indexOf(cards[index]);
+  selectedIndex = selected.indexOf(index);
   if (selectedIndex == -1){
     selected.push(index);
     card.style.backgroundColor = "Lightgreen"
@@ -37,10 +39,42 @@ function select(index){
 }
 
 
-function updateHref(){
+function enterLibraryMode(){
   if (selected.length != 1){
     return;
   }
 
   libraryLink.href = `library/libraryTemplate.html?id=${selected[0]}`;
 }
+
+function enterSlideShowMode(){
+  if (selected.length == 0){
+    return;
+  }
+
+  // body.innerHTML += "<img id=test src=assets/characters/desktop/kakashiHatake.jpg>";
+  // const test = document.querySelector("#test");
+  // enterFullScreen(test);
+}
+
+function enterFullScreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  }else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();     // Firefox
+  }else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();  // Safari
+  }else if(element.msRequestFullscreen) {
+    element.msRequestFullscreen();      // IE/Edge
+  }
+};
+
+function exitFullscreen() {
+  if(document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+};

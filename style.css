@@ -59,12 +59,20 @@ body {
   opacity: 0.6;
 }
 
-.card:enabled {
-  background-color: green;
+.slideShowPrompt {
+  padding: 10px;
+  border: ridge white;
+  display: inline-block;
 }
 
-/* .thumbnail-characters { */
-/*   height: 400px; */
-/*   width: 650px; */
-/* } */
+.desktopOption {
+  padding: 10px;
+  display: inline-block;
+}
+
+
+.mobileOption {
+  padding: 10px;
+  display: inline-block;
+}
 
