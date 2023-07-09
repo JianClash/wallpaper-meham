@@ -42,27 +42,34 @@ body {
   background-color: #140d21;
 }
 
+
 .thumbnail:hover + .title {
-  display: block;
-  width: 100%;
-  text-align: center;
+  transform: translateY(-50px);
+  opacity: 0.6;
 }
 
 .title {
   position: absolute;
-  bottom: 5px;
+  bottom: -50px;
   right: 0px;
 
-  display: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 
   background-color: black;
-  opacity: 0.6;
+  opacity: 0.0;
+
+  transition: all 0.3s;
 }
 
 .slideShowPrompt {
+  position: absolute;
+  top: 30%;
+  left: 35%;
   padding: 10px;
   border: ridge white;
-  display: inline-block;
+  display: none;
 }
 
 .desktopOption {
