@@ -2,7 +2,7 @@ var index;
 var card;
 let shown = false;
 const cards = ["nature", "characters", "paintings", "renders"];
-let body = document.querySelector("#body");
+let container = document.querySelector("#container");
 let title = document.querySelector("#title");
 
 const images = [
@@ -40,18 +40,12 @@ function showImages(){
 
   while (true){
     index = Math.floor(Math.random() * totalImages.length);
-    
-    console.log("---------------------");
-    console.log(index);
-    console.log(desktopImages);
 
     if (index >= desktopImages){
-      console.log("mobile")
-      body.innerHTML += `<div class='card'><img src=${card.path}mobile/${totalImages[index]} width=270 height=600></div>`;
+      container.innerHTML += `<div class='card animate slideInBottom animate--delay1s animate--fast'><img src=${card.path}mobile/${totalImages[index]} width=270 height=600></div>`;
       totalImages.splice(index,1)
     } else {
-      console.log(`desktop ${index}|${desktopImages}`);
-      body.innerHTML += `<div class='card'><img src=${card.path}desktop/${totalImages[index]} width=540 height=360></div>`;
+      container.innerHTML += `<div class='card animate slideInBottom animate--delay1s'><img src=${card.path}desktop/${totalImages[index]} width=540 height=360></div>`;
       totalImages.splice(index,1)
       desktopImages --;
     }
