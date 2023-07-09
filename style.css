@@ -1,10 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
 * {
   color: white;  
-  font-family: Roboto, Ubuntu, monospace;
+  font-family: 'Raleway';
 }
 
 body {
+  height: 100vh;
+  width: 100vw;
   background-color: #211d36;
+  margin: 0rem;
+  overflow: hidden;
 }
 
 .topnav{
@@ -13,9 +35,11 @@ body {
 }
 
 .topnav h2{
+  font-family: 'Space Mono';
   float: left;
   display: block;
   text-align: center;
+  user-select: none;
 }
 
 .topnav .pages{
@@ -31,15 +55,25 @@ body {
   vertical-align: middle; 
   border-radius: 8px;
   font-size: 1.1rem;
+  user-select: none;
 }
 
-.card {
-  padding: 20px;
-  border-style: ridge;
-  border-radius: 11px;
-  position: relative;
-  display: inline-block;
-  background-color: #140d21;
+#cards {
+  position: absolute;
+  display: flex;
+  gap: 4vmin;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%,-50%);
+  user-select: none;
+}
+
+.thumbnail {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% 50%;
+  cursor: pointer;
 }
 
 

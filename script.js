@@ -3,6 +3,7 @@ const cards = ["nature", "characters", "paintings", "renders"];
 
 const libraryLink = document.querySelector("#library");
 const slideShowLink = document.querySelector("#slideShow");
+const track = document.querySelector("#cards");
 
 let body = document.querySelector("#body");
 
@@ -48,33 +49,52 @@ function enterLibraryMode(){
 }
 
 function enterSlideShowMode(){
-  if (selected.length == 0){
-    return;
-  }
-
-  // body.innerHTML += "<img id=test src=assets/characters/desktop/kakashiHatake.jpg>";
-  // const test = document.querySelector("#test");
-  // enterFullScreen(test);
 }
 
-function enterFullScreen(element) {
-  if(element.requestFullscreen) {
-    element.requestFullscreen();
-  }else if (element.mozRequestFullScreen) {
-    element.mozRequestFullScreen();     // Firefox
-  }else if (element.webkitRequestFullscreen) {
-    element.webkitRequestFullscreen();  // Safari
-  }else if(element.msRequestFullscreen) {
-    element.msRequestFullscreen();      // IE/Edge
-  }
-};
 
-function exitFullscreen() {
-  if(document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
+window.onwheel = e => {
+  const mouseWheelDirection = detectMouseWheelDirection(e);
+  const nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage - mouseWheelDirection),
+      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+  track.dataset.percentage =  nextPercentage;
+
+
+  track.animate({
+    transform: `translate(${nextPercentage}%, -50%)`,
+  }, {duration: 1200, fill: "forwards"});
+
+  for (const image of track.getElementsByClassName("thumbnail")) {
+    image.animate({
+      objectPosition:`${nextPercentage + 100}% 50%`,
+    }, {duration: 1200, fill: "forwards"});
   }
-};
+
+  track.dataset.prevPercentage = track.dataset.percentage;
+}
+
+window.onmousedown = e => {
+  track.dataset.mouseDownAt = e.clientX;
+}
+
+window.onmouseup = e => {
+  track.dataset.prevPercentage = track.dataset.percentage;
+}
+
+
+function detectMouseWheelDirection( e )
+{
+    var delta = null,
+        direction = false;
+
+    if ( e.wheelDelta ) { // will work in most cases
+        delta = e.wheelDelta / 60;
+    } else if ( e.detail ) { // fallback for Firefox
+        delta = -e.detail / 2;
+    }
+    if ( delta !== null ) {
+        direction = delta > 0 ? -5 : 5;
+    }
+
+    return direction;
+}
